@@ -1,4 +1,4 @@
-# Sy Phany Guo — Personal Portfolio Website
+# Syphany Guo — Personal Portfolio Website
 **ISDS 4125: Analysis and Design of Information Systems — Fall 2026**  
 **Instructor:** Dr. Gabriele Piccoli | Louisiana State University (E. J. Ourso College of Business)
 
