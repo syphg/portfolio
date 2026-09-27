@@ -11,23 +11,21 @@
 ---
 
 ## 📌 Project Overview
-This website is a professional, responsive personal portfolio built for ISDS 4125 using a **hybrid layout** architecture designed for recruiters and industry evaluators. It highlights my academic background in Information Systems and Analytics at LSU, my corporate experience in automotive risk analytics and financial management, and an end-to-end enterprise capstone analytics project.
+This website is a professional personal portfolio built for ISDS 4125 using a **hybrid layout** with a **custom ocean palette** (marine navy, coastal cyan, and seafoam teal). The content is strictly authentic and grounded in my academic studies at Louisiana State University, real work experience, and technical competencies.
 
 ### Key Structure & Files
 1. **`index.html` (Landing Page — Single-Page Architecture):**
-   * **Profile / Hero:** Headline, status pill, core value proposition, key metric callouts, and professional photographic portrait.
-   * **About / Background:** Overview of my studies in Information Systems and Analytics at LSU, core pillars, and bilingual capability (English & Mandarin Chinese).
-   * **Skills & Competencies:** Categorized skill cards across BI/Data Visualization (PowerBI, Tableau), Technical Tools (Python, SQL, GitHub, Data Warehousing), Risk & Financial Operations (BOM, PO systems, procurement), and Coursework.
-   * **Experience / Jobs Held:** Chronological timeline detailing roles as Auto Risk Analyst Intern at Assurant, Treasurer & Financial Analyst for Formula SAE TigerRacing ($60K+ budget, -23% costs), and Assistant Project Manager at Grabince Industrial LLC.
-   * **Contact:** Direct channels (email, phone, LinkedIn) and interactive messaging form.
+   * **Profile / Hero:** Clean typographic hero highlighting LSU Information Systems & Analytics degree and career summary.
+   * **About / Background:** Summary of academic focus, coursework (Design of Information Systems, Business Statistics, Data Mining, Accounting Analytics, Data & Information Management), and bilingual capability (Mandarin Chinese & English).
+   * **Skills & Competencies:** Categorized skills across Software (PowerBI, Tableau Software, Claude Code, Google Workspaces, Microsoft Office, 20-20 Design), Technical (Python, SQL, Github, Data Visualization, Data Warehousing, Risk Analysis), and Operations (BOM, Purchase Orders, Vendor Sourcing).
+   * **Experience / Jobs Held:** Chronological records of positions at Assurant (Auto Risk Analyst), Formula SAE at LSU TigerRacing (Treasurer & Financial Analyst), and Grabince Industrial LLC (Assistant Project Manager).
+   * **Contact:** Direct channels (email, phone, LinkedIn, location).
 2. **`resume.html` (Dedicated Resume Page):**
-   * Formal, printable digital resume expanding on education, professional work experience, technical competencies, and coursework.
-   * Features `@media print` styling and a one-click **"Print / Save as PDF"** action button.
+   * Formal, printable digital resume directly mirroring my resume with print-optimized styles (`@media print`) and instant **Print / Save as PDF** functionality.
 3. **`project.html` (Dedicated Project Showcase Page):**
-   * Deep-dive case study on **SupplyPulse**, an enterprise predictive inventory and supply chain telemetry platform.
-   * Details the bullwhip effect problem statement, 4-phase system architecture, ARIMA demand forecasting engine, interactive web telemetry, and business KPI results (-23% stockouts, +18% forecast precision).
+   * Deep-dive case study on the **AI-Driven QBR Automation & Auto Risk Analysis** initiative, detailing auto manufacturer warranty predictions, high-risk dealer identification, and Claude Code AI skill development cutting deck preparation from 1 day to 10 minutes.
 4. **`styles.css` (Shared Design System):**
-   * Unified modern dark-slate theme (`#070a12`, `#111827`) with vibrant indigo and electric teal accents (`#6366f1`, `#06b6d4`), glassmorphism, responsive navigation, and mobile-friendly layouts.
+   * Consistent ocean theme (`#050e1a`, `#0a182d`, `#142f54`) with coastal cyan (`#06b6d4`), seafoam (`#14b8a6`), and sky blue (`#38bdf8`) accents, responsive navigation, and mobile-friendly layouts.
 
 ---
 
