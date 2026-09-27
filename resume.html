@@ -8,7 +8,8 @@
   <meta name="author" content="Syphany Guo">
   <title>Resume | Syphany Guo</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+  <link rel="icon" type="image/png" href="images/brand-icon.png">
+  <link rel="apple-touch-icon" href="images/brand-icon.png">
 </head>
 <body>
 
@@ -16,7 +17,7 @@
   <header class="site-header" id="site-header">
     <div class="container nav-container">
       <a href="index.html" class="brand-logo" id="brand-logo-link">
-        <span class="brand-badge">SG</span>
+        <img src="images/brand-icon.png" alt="Syphany Guo Logo" class="brand-icon">
         <span class="brand-text">Syphany <span>Guo</span></span>
       </a>
 
@@ -28,6 +29,7 @@
         <a href="project.html" class="nav-link" id="nav-project">Featured Project</a>
         <a href="resume.html" class="nav-link active" id="nav-resume">Full Resume</a>
         <a href="index.html#contact" class="nav-link" id="nav-contact">Contact</a>
+        <span class="nav-indicator" id="nav-indicator" aria-hidden="true"></span>
       </nav>
 
       <div class="nav-cta-group">
@@ -243,6 +245,9 @@
   <script>
     const toggleBtn = document.getElementById('mobile-toggle-btn');
     const navLinks = document.getElementById('primary-navigation');
+    const indicator = document.getElementById('nav-indicator');
+    const allLinks = Array.from(navLinks.querySelectorAll('.nav-link'));
+    const activeLink = document.querySelector('.nav-link.active') || document.getElementById('nav-resume');
 
     if (toggleBtn && navLinks) {
       toggleBtn.addEventListener('click', () => {
@@ -251,6 +256,32 @@
         navLinks.classList.toggle('active');
       });
     }
+
+    function positionIndicator(target) {
+      if (!target || !indicator || window.innerWidth <= 768) {
+        if (indicator) indicator.classList.remove('visible');
+        return;
+      }
+      const navRect = navLinks.getBoundingClientRect();
+      const linkRect = target.getBoundingClientRect();
+      const offset = linkRect.left - navRect.left;
+      const width = linkRect.width;
+
+      indicator.style.transform = `translateX(${offset}px)`;
+      indicator.style.width = `${width}px`;
+      indicator.classList.add('visible');
+    }
+
+    allLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => positionIndicator(link));
+    });
+    navLinks.addEventListener('mouseleave', () => positionIndicator(activeLink));
+    window.addEventListener('resize', () => positionIndicator(activeLink));
+    window.addEventListener('DOMContentLoaded', () => positionIndicator(activeLink));
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => positionIndicator(activeLink));
+    }
+    setTimeout(() => positionIndicator(activeLink), 60);
   </script>
 </body>
 </html>

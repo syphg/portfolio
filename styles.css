@@ -1,53 +1,87 @@
 /* ==========================================================================
-   SYPHANY GUO PORTFOLIO - OCEAN THEME STYLESHEET
-   Clean, modern, oceanic palette (deep marine, teal, seafoam, aqua)
+   SYPHANY GUO PORTFOLIO - FISHYLIST DESIGN SYSTEM
+   Directly modeled on github.com/sguoassurant/FishyList
+   
+   Core Variables & Palette:
+     --bg:       #0d1a2b  (Deep navy canvas)
+     --card:     #132538  (Task card surface)
+     --navy:     #0a1522  (Header, callouts & footer background)
+     --ink:      #f2e8d5  (Warm parchment cream body text)
+     --ink-head: #f4ecd8  (Warm ivory display text)
+     --muted:    #93a6bd  (Slate blue-gray text)
+     --line:     #284460  (Crisp slate navy borders)
+     --line-alt: #33506e  (Divider line)
+     --blue:     #8fb8e8  (Powder blue primary accent)
+     --today:    #ddab4e  (Warm golden amber highlight)
+     --ok:       #6fc79a  (Soft sage mint)
+     --overdue:  #e8907a  (Coral peach)
+   
+   Typography:
+     Display/Headings: "Bookman Old Style", "Cambria Math", Cambria, Georgia, serif
+     Titles/Headers:   Century, "Century Schoolbook", Cambria, Georgia, serif
+     Body/UI:          "Segoe UI", system-ui, -apple-system, sans-serif
+   
+   Box Shapes:
+     Rectilinear 4px borders with signature 4px-6px thick left-edge accent borders.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-
 :root {
-  /* Ocean Color Palette */
-  --ocean-abyss: #050e1a;         /* Deep ocean floor */
-  --ocean-deep: #0a182d;          /* Marine navy */
-  --ocean-mid: #0e2340;           /* Mid ocean */
-  --ocean-surface: #142f54;       /* Card surface */
-  --ocean-surface-hover: #1b3d6c;
-  
-  --ocean-border: rgba(56, 189, 248, 0.16);
-  --ocean-border-light: rgba(56, 189, 248, 0.3);
-  --ocean-border-glow: rgba(20, 184, 166, 0.4);
+  color-scheme: only dark;
 
-  /* Accents: Teal, Aquamarine, Seafoam, Sky */
-  --ocean-teal: #0d9488;          /* Deep teal */
-  --ocean-cyan: #06b6d4;          /* Coastal cyan */
-  --ocean-seafoam: #14b8a6;       /* Seafoam */
-  --ocean-aqua: #38bdf8;          /* Clear water blue */
-  --ocean-foam: #e0f2fe;          /* Seafoam white */
-  
-  --ocean-gradient: linear-gradient(135deg, #0284c7 0%, #0d9488 50%, #14b8a6 100%);
-  --ocean-gradient-subtle: linear-gradient(180deg, rgba(14, 35, 64, 0.8) 0%, rgba(10, 24, 45, 0.9) 100%);
-  --ocean-glow: 0 0 25px rgba(6, 182, 212, 0.25);
+  /* FishyList Authentic Palette */
+  --bg: #0d1a2b;
+  --card: #132538;
+  --card-hover: #182e44;
+  --navy: #0a1522;
+  --ink: #f2e8d5;
+  --ink-head: #f4ecd8;
+  --muted: #93a6bd;
+  --line: #284460;
+  --line-alt: #33506e;
 
-  /* Text */
-  --text-primary: #f0f9ff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-seafoam: #5eead4;
-  --text-aqua: #7dd3fc;
+  --blue: #8fb8e8;
+  --accent: #8fb8e8;
+  --today: #ddab4e;
+  --ok: #6fc79a;
+  --overdue: #e8907a;
+  --soon: #8fb8e8;
+
+  /* Semantic Theme Mappings */
+  --text-primary: var(--ink);
+  --text-secondary: var(--muted);
+  --text-muted: #748aa2;
+  --text-aqua: var(--blue);
+  --text-seafoam: var(--ok);
+  --text-gold: var(--today);
+
+  --ocean-abyss: var(--bg);
+  --ocean-deep: var(--navy);
+  --ocean-mid: #0a1522;
+  --ocean-surface: var(--card);
+  --ocean-surface-hover: var(--card-hover);
+  --ocean-border: var(--line);
+  --ocean-border-light: var(--line-alt);
+  --ocean-border-glow: rgba(143, 184, 232, 0.35);
+
+  --ocean-teal: #6fc79a;
+  --ocean-cyan: var(--blue);
+  --ocean-seafoam: var(--ok);
+  --ocean-aqua: var(--blue);
+  --ocean-foam: var(--ink);
 
   /* Fonts */
-  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --display: "Bookman Old Style", "Cambria Math", Cambria, "Palatino Linotype", Georgia, serif;
+  --font-heading: var(--display);
+  --font-subheading: Century, "Century Schoolbook", Cambria, Georgia, serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, sans-serif;
 
-  /* Layout */
-  --container-max: 1100px;
-  --container-narrow: 860px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
+  /* Box Geometry: Crisp 4px rectilinear corners characteristic of FishyList */
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-full: 4px;
 
-  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.12s ease;
 }
 
 /* ==========================================================================
@@ -63,151 +97,159 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  background-color: var(--ocean-abyss);
+  background-color: var(--bg);
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--text-primary);
-  background-color: var(--ocean-abyss);
-  background-image: 
-    radial-gradient(circle at 10% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 45%, rgba(20, 184, 166, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 50% 85%, rgba(2, 132, 199, 0.08) 0%, transparent 50%);
-  background-attachment: fixed;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 "Segoe UI", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--ocean-abyss);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #142f54;
+  background: var(--line);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ocean-cyan);
+  background: var(--blue);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  color: var(--text-primary);
-  font-weight: 700;
-  line-height: 1.25;
+  font-family: var(--display);
+  color: var(--ink-head);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  margin: 0 0 6px;
 }
 
 p {
-  color: var(--text-secondary);
+  color: var(--ink);
+  margin-bottom: 1rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: all var(--transition);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
-   Layout Containers
+   Containers
    ========================================================================== */
 .container {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 }
 
 .container-narrow {
   width: 100%;
-  max-width: var(--container-narrow);
+  max-width: 860px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 3.5rem 0;
   position: relative;
 }
 
 .section-alt {
-  background: rgba(10, 24, 45, 0.5);
-  border-top: 1px solid var(--ocean-border);
-  border-bottom: 1px solid var(--ocean-border);
+  background: rgba(10, 21, 34, 0.5);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 /* ==========================================================================
-   Header & Navigation
+   Header & Navigation (FishyList Banner Style)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(5, 14, 26, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--ocean-border);
+  background: var(--navy);
+  color: var(--ink-head);
+  border-bottom: 1px solid var(--line);
+  border-left: 6px solid var(--blue);
+  box-shadow: 0 2px 10px rgba(10, 21, 34, 0.6);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 68px;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--ink-head);
 }
 
-.brand-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  background: var(--ocean-gradient);
-  color: #ffffff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 10px rgba(6, 182, 212, 0.3);
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 4px rgba(143, 184, 232, 0.4));
+  transition: transform var(--transition);
+}
+
+.brand-logo:hover .brand-icon {
+  transform: translateY(-2px) scale(1.08) rotate(-4deg);
 }
 
 .brand-text span {
-  color: var(--ocean-aqua);
+  color: var(--blue);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
-}
-
-.nav-link {
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  padding: 0.3rem 0;
+  gap: 1.6rem;
   position: relative;
 }
 
+.nav-link {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 6px 0;
+  position: relative;
+  transition: color var(--transition);
+}
+
 .nav-link:hover {
-  color: var(--text-primary);
+  color: var(--ink-head);
 }
 
 .nav-link.active {
-  color: var(--ocean-aqua);
+  color: var(--blue);
   font-weight: 600;
 }
 
@@ -218,279 +260,325 @@ a {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--ocean-cyan);
-  border-radius: 2px;
+  background: var(--blue);
+}
+
+/* On desktop, hide individual static underlines and use the smooth sliding indicator */
+@media (min-width: 769px) {
+  .nav-link.active::after {
+    display: none !important;
+  }
+}
+
+/* Sliding active indicator bar */
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--blue);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(0);
+  width: 0;
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              width 0.28s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.15s ease;
+  z-index: 2;
+}
+
+.nav-indicator.visible {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .nav-indicator {
+    display: none !important;
+  }
 }
 
 .nav-cta-group {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 10px;
 }
 
 .mobile-menu-toggle {
   display: none;
-  background: transparent;
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-sm);
-  padding: 0.45rem;
-  color: var(--text-primary);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 6px;
+  color: var(--ink);
   cursor: pointer;
 }
 
 .mobile-menu-toggle svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   display: block;
 }
 
 /* ==========================================================================
-   Section Headers
+   Section Headers (FishyList Typography & Divider)
    ========================================================================== */
 .section-header {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 3rem auto;
+  text-align: left;
+  max-width: 100%;
+  margin: 0 0 2rem 0;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 8px;
 }
 
 .section-pretitle {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 600;
+  display: block;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--ocean-seafoam);
-  background: rgba(20, 184, 166, 0.12);
-  border: 1px solid rgba(20, 184, 166, 0.28);
-  padding: 0.3rem 0.85rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 0.85rem;
+  letter-spacing: 0.09em;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .section-title {
-  font-size: 2.2rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.85rem;
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin: 0 0 4px 0;
 }
 
 .section-desc {
-  font-size: 1rem;
-  color: var(--text-secondary);
+  font-size: 14.5px;
+  color: var(--muted);
+  margin: 0;
 }
 
 .text-ocean {
-  background: var(--ocean-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--blue);
 }
 
 /* ==========================================================================
-   Buttons
+   Buttons (FishyList Crisp Rectangles)
    ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 14px;
   font-weight: 600;
-  padding: 0.65rem 1.4rem;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
+  padding: 7px 16px;
+  border-radius: 4px;
+  border: 0;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .btn-primary {
-  background: var(--ocean-gradient);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.25);
+  background: var(--blue);
+  color: var(--card);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
-  color: #ffffff;
+  background: #a4c7f0;
+  color: #0a1522;
 }
 
 .btn-secondary {
-  background: var(--ocean-mid);
-  color: var(--text-primary);
-  border-color: var(--ocean-border);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
 }
 
 .btn-secondary:hover {
-  background: var(--ocean-surface);
-  border-color: var(--ocean-cyan);
-  transform: translateY(-2px);
+  background: rgba(143, 184, 232, 0.1);
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--text-primary);
-  border-color: var(--ocean-border);
+  color: var(--muted);
+  border: 1px solid var(--line);
 }
 
 .btn-outline:hover {
-  background: rgba(6, 182, 212, 0.08);
-  border-color: var(--ocean-aqua);
-  color: var(--ocean-aqua);
+  color: var(--ink-head);
+  border-color: var(--blue);
+  background: rgba(143, 184, 232, 0.08);
 }
 
 .btn-sm {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
-  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 4px;
 }
 
 .btn-lg {
-  padding: 0.8rem 1.75rem;
-  font-size: 1rem;
+  padding: 9px 20px;
+  font-size: 15px;
 }
 
 /* ==========================================================================
-   Hero Section (Clean, Typographic, No fake portraits)
+   Hero Section (FishyList Banner Box Shape)
    ========================================================================== */
 .hero-clean {
-  padding: 5rem 0 4rem 0;
-  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--blue);
+  border-radius: 4px;
+  padding: 2.75rem 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .hero-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
-  background: rgba(6, 182, 212, 0.1);
-  border: 1px solid rgba(6, 182, 212, 0.25);
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  color: var(--text-aqua);
-  margin-bottom: 1.5rem;
+  gap: 8px;
+  padding: 3px 10px;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 12.5px;
+  color: var(--blue);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
 }
 
 .ocean-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--ocean-seafoam);
-  box-shadow: 0 0 8px var(--ocean-seafoam);
+  background: var(--today);
 }
 
 .hero-clean-title {
-  font-size: 3.4rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.85rem;
+  font-size: 2.85rem;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  color: var(--ink-head);
+  margin-bottom: 0.5rem;
 }
 
 .hero-clean-subtitle {
-  font-size: 1.3rem;
-  color: var(--text-seafoam);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--today);
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .hero-clean-bio {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 680px;
-  margin: 0 auto 2.25rem auto;
+  font-size: 1.05rem;
+  color: var(--ink);
+  max-width: 820px;
+  margin-bottom: 1.75rem;
   line-height: 1.7;
 }
 
 .hero-clean-actions {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
+/* Hero Summary Cards (Signature FishyList Task Card Silhouette) */
 .hero-resume-summary-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: left;
+  gap: 14px;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
 }
 
 .hero-summary-card {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-md);
-  padding: 1.4rem;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  border-radius: 4px;
+  padding: 14px 16px;
   transition: all var(--transition);
 }
 
 .hero-summary-card:hover {
-  border-color: var(--ocean-border-light);
-  transform: translateY(-2px);
+  border-left-color: var(--today);
+  background: #0f1e30;
 }
 
 .summary-card-label {
-  font-size: 0.78rem;
+  font-size: 11.5px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ocean-seafoam);
-  font-weight: 600;
-  margin-bottom: 0.4rem;
+  letter-spacing: 0.09em;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .summary-card-val {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin-bottom: 3px;
 }
 
 .summary-card-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  font-size: 12.5px;
+  color: var(--muted);
 }
 
 /* ==========================================================================
    About Section
    ========================================================================== */
 .about-box {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-lg);
-  padding: 2.75rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  border-radius: 4px;
+  padding: 2.25rem 2.5rem;
   max-width: var(--container-narrow);
   margin: 0 auto;
 }
 
 .about-box p {
   font-size: 1.05rem;
-  line-height: 1.8;
+  color: var(--ink);
+  line-height: 1.75;
   margin-bottom: 1.25rem;
 }
 
-.about-box p:last-child {
-  margin-bottom: 0;
+.about-box strong {
+  color: var(--ink-head);
 }
 
 .education-callout {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  background: rgba(6, 182, 212, 0.06);
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  border-radius: var(--radius-md);
-  padding: 1.4rem;
+  gap: 16px;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--today);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem;
   margin: 1.5rem 0;
 }
 
 .edu-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  background: rgba(6, 182, 212, 0.15);
-  color: var(--ocean-aqua);
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: rgba(143, 184, 232, 0.12);
+  color: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,155 +586,176 @@ a {
 }
 
 .edu-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .edu-text h4 {
-  font-size: 1.05rem;
-  margin-bottom: 0.2rem;
+  font-size: 1.1rem;
+  font-family: var(--font-subheading);
+  color: var(--ink-head);
+  margin-bottom: 3px;
 }
 
 .edu-text p {
-  font-size: 0.9rem !important;
-  color: var(--text-secondary);
+  font-size: 14px !important;
+  color: var(--muted) !important;
   margin-bottom: 0 !important;
 }
 
 /* ==========================================================================
-   Skills Grid (Direct from Resume)
+   Skills Grid (FishyList Box Shapes)
    ========================================================================== */
 .skills-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 16px;
 }
 
 .ocean-card {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-md);
-  padding: 1.75rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--line);
+  border-radius: 4px;
+  padding: 1.5rem 1.6rem;
   transition: all var(--transition);
 }
 
 .ocean-card:hover {
-  border-color: var(--ocean-border-light);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.15);
+  border-color: var(--line-alt);
+  border-left-color: var(--blue);
+  background: var(--card-hover);
 }
 
 .card-title-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--ocean-border);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
 }
 
 .card-title-group svg {
-  width: 20px;
-  height: 20px;
-  color: var(--ocean-seafoam);
+  width: 18px;
+  height: 18px;
+  color: var(--blue);
 }
 
 .card-title-group h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+  font-family: var(--font-subheading);
+  color: var(--ink-head);
+  margin: 0;
 }
 
 .pill-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 7px;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 12.5px;
   font-weight: 500;
-  padding: 0.35rem 0.8rem;
-  border-radius: var(--radius-full);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid var(--ocean-border);
-  color: var(--text-aqua);
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: all var(--transition);
+}
+
+.pill:hover {
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 .pill-highlight {
-  background: rgba(20, 184, 166, 0.12);
-  border-color: rgba(20, 184, 166, 0.3);
-  color: var(--text-seafoam);
+  background: rgba(143, 184, 232, 0.12);
+  border-color: var(--blue);
+  color: var(--blue);
+  font-weight: 600;
 }
 
 /* ==========================================================================
-   Experience Timeline (Direct from Resume)
+   Experience Timeline (FishyList Task Cards)
    ========================================================================== */
 .exp-list {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 14px;
   max-width: var(--container-narrow);
   margin: 0 auto;
 }
 
 .exp-card {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-md);
-  padding: 2rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--line);
+  border-radius: 4px;
+  padding: 1.5rem 1.75rem;
   transition: all var(--transition);
 }
 
 .exp-card:hover {
-  border-color: var(--ocean-border-light);
-  transform: translateY(-2px);
+  border-color: var(--line-alt);
+  border-left-color: var(--blue);
+  background: var(--card-hover);
+}
+
+.exp-card:first-child {
+  border-left-color: var(--blue); /* Pinned/High-priority item style */
 }
 
 .exp-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
 .exp-role {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  color: var(--ink-head);
 }
 
 .exp-company {
-  font-size: 0.95rem;
-  color: var(--ocean-aqua);
+  font-size: 14px;
+  color: var(--blue);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 }
 
 .exp-dates {
-  font-size: 0.82rem;
-  color: var(--text-seafoam);
-  background: rgba(20, 184, 166, 0.1);
-  border: 1px solid rgba(20, 184, 166, 0.25);
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: var(--blue);
+  background: rgba(143, 184, 232, 0.1);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 3px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .exp-bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 8px;
 }
 
 .exp-bullets li {
   position: relative;
   padding-left: 1.25rem;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
+  font-size: 14.5px;
+  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -654,38 +763,42 @@ a {
   content: '▪';
   position: absolute;
   left: 0;
-  color: var(--ocean-seafoam);
+  color: var(--blue);
 }
 
 /* ==========================================================================
-   Project Teaser (From Resume)
+   Project Teaser (FishyList Banner Box)
    ========================================================================== */
 .project-teaser-box {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--today);
+  border-radius: 4px;
+  padding: 2.25rem 2.5rem;
   max-width: var(--container-narrow);
   margin: 0 auto;
 }
 
 .project-teaser-badge {
-  font-size: 0.8rem;
-  color: var(--ocean-seafoam);
+  font-size: 12px;
+  color: var(--today);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 6px;
 }
 
 .project-teaser-title {
-  font-size: 1.65rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin-bottom: 12px;
 }
 
 .project-teaser-desc {
-  font-size: 1rem;
-  color: var(--text-secondary);
+  font-size: 15px;
+  color: var(--ink);
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -696,7 +809,7 @@ a {
 .contact-ocean-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 14px;
   max-width: var(--container-narrow);
   margin: 0 auto;
 }
@@ -704,26 +817,27 @@ a {
 .contact-method-card {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-md);
+  gap: 14px;
+  padding: 1.1rem 1.3rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--line);
+  border-radius: 4px;
   transition: all var(--transition);
 }
 
 .contact-method-card:hover {
-  border-color: var(--ocean-aqua);
-  background: var(--ocean-surface);
-  transform: translateY(-2px);
+  border-color: var(--line-alt);
+  border-left-color: var(--blue);
+  background: var(--card-hover);
 }
 
 .contact-method-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(6, 182, 212, 0.12);
-  color: var(--ocean-aqua);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background: rgba(143, 184, 232, 0.12);
+  color: var(--blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -731,22 +845,27 @@ a {
 }
 
 .contact-method-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .contact-method-info h4 {
-  font-size: 0.82rem;
+  font-size: 11.5px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 0.2rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 2px;
 }
 
 .contact-method-info a, .contact-method-info p {
-  font-size: 0.98rem;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--ink);
+  margin: 0;
+}
+
+.contact-method-info a:hover {
+  color: var(--blue);
 }
 
 /* ==========================================================================
@@ -756,51 +875,54 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0 2rem 0;
-  border-bottom: 1px solid var(--ocean-border);
-  margin-bottom: 2.5rem;
+  padding: 1.25rem 0 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 12px;
 }
 
 .resume-paper {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 10px 30px rgba(5, 14, 26, 0.5);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--blue);
+  border-radius: 4px;
+  padding: 2.75rem;
+  margin-bottom: 3rem;
 }
 
 .resume-header {
-  border-bottom: 2px solid var(--ocean-border);
-  padding-bottom: 1.75rem;
-  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .resume-name {
   font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 0.35rem;
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin-bottom: 4px;
 }
 
 .resume-title-line {
   font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ocean-seafoam);
-  margin-bottom: 1rem;
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  color: var(--today);
+  margin-bottom: 12px;
 }
 
 .resume-contact-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--muted);
 }
 
 .resume-contact-row a {
-  color: var(--ocean-aqua);
+  color: var(--blue);
 }
 
 .resume-contact-row a:hover {
@@ -808,7 +930,7 @@ a {
 }
 
 .resume-section {
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
 .resume-section:last-child {
@@ -816,20 +938,21 @@ a {
 }
 
 .resume-section-heading {
-  font-size: 1.15rem;
+  font-size: 12.5px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ocean-aqua);
+  letter-spacing: 0.09em;
+  color: var(--blue);
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--ocean-border);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--line);
 }
 
 .resume-entry {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.4rem;
 }
 
 .resume-entry:last-child {
@@ -841,41 +964,47 @@ a {
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.25rem;
+  gap: 8px;
+  margin-bottom: 3px;
 }
 
 .resume-role {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-family: var(--font-subheading);
+  font-weight: 400;
+  color: var(--ink-head);
 }
 
 .resume-dates {
-  font-size: 0.85rem;
-  color: var(--text-seafoam);
+  font-size: 12px;
+  color: var(--blue);
+  background: rgba(143, 184, 232, 0.1);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 3px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .resume-subline {
-  font-size: 0.92rem;
-  color: var(--ocean-aqua);
+  font-size: 14px;
+  color: var(--blue);
   font-weight: 500;
-  margin-bottom: 0.6rem;
+  margin-bottom: 8px;
 }
 
 .resume-bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 7px;
 }
 
 .resume-bullets li {
   position: relative;
   padding-left: 1.25rem;
-  font-size: 0.93rem;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -883,50 +1012,53 @@ a {
   content: '▪';
   position: absolute;
   left: 0;
-  color: var(--ocean-seafoam);
+  color: var(--blue);
 }
 
 /* ==========================================================================
    Dedicated Project Page
    ========================================================================== */
 .project-detail-hero {
-  padding: 4rem 0 2.5rem 0;
-  text-align: center;
+  padding: 3rem 0 2rem 0;
+  text-align: left;
 }
 
 .project-detail-hero h1 {
-  font-size: 2.75rem;
-  max-width: 800px;
-  margin: 0 auto 1rem auto;
+  font-size: 2.5rem;
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin-bottom: 1rem;
 }
 
 .project-specs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
+  gap: 12px;
+  margin: 1.75rem 0;
 }
 
 .spec-item {
-  background: var(--ocean-gradient-subtle);
-  border: 1px solid var(--ocean-border);
-  border-radius: var(--radius-sm);
-  padding: 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 4px;
+  padding: 12px 14px;
   text-align: left;
 }
 
 .spec-item span {
   display: block;
-  font-size: 0.78rem;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 3px;
 }
 
 .spec-item strong {
-  font-size: 0.95rem;
-  color: var(--text-primary);
+  font-size: 14.5px;
+  color: var(--ink-head);
 }
 
 /* ==========================================================================
@@ -934,9 +1066,9 @@ a {
    ========================================================================== */
 .site-footer {
   margin-top: auto;
-  background: var(--ocean-abyss);
-  border-top: 1px solid var(--ocean-border);
-  padding: 3rem 0 2rem 0;
+  background: var(--navy);
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0 2rem 0;
 }
 
 .footer-inner {
@@ -945,39 +1077,44 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--ocean-border);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .footer-brand h3 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  font-family: var(--display);
+  font-weight: 400;
+  color: var(--ink-head);
+  margin-bottom: 4px;
 }
 
 .footer-brand p {
-  font-size: 0.88rem;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
 }
 
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.4rem;
   flex-wrap: wrap;
 }
 
 .footer-links a {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  font-size: 14px;
+  color: var(--muted);
 }
 
 .footer-links a:hover {
-  color: var(--ocean-aqua);
+  color: var(--blue);
 }
 
 .footer-bottom {
-  padding-top: 1.75rem;
+  padding-top: 1.5rem;
   text-align: center;
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  font-size: 13px;
+  color: var(--muted);
 }
 
 /* ==========================================================================
@@ -985,7 +1122,7 @@ a {
    ========================================================================== */
 @media (max-width: 768px) {
   .hero-clean-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   .nav-links, .nav-cta-group .btn {
     display: none;
@@ -997,12 +1134,11 @@ a {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 72px;
+    top: 68px;
     left: 0;
     right: 0;
-    background: rgba(5, 14, 26, 0.98);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--ocean-border);
+    background: var(--navy);
+    border-bottom: 1px solid var(--line);
     padding: 1.5rem;
     gap: 1rem;
   }
@@ -1013,7 +1149,7 @@ a {
     grid-template-columns: 1fr;
   }
   .resume-paper {
-    padding: 2rem 1.25rem;
+    padding: 1.5rem;
   }
 }
 
